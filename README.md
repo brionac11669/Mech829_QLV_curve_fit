@@ -1,3 +1,3 @@
-# queensu
+# MECH829
 queensucode
-> test repo for commit
+> add instructions
