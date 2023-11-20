@@ -13,10 +13,9 @@ end
 if savedata~='y'||~exist('save_count','var')
     save_count=1;
     close all
-elseif exist('norm_fig','var')
-    close([1,2,3])
+    else
+    close all -except norm_fig
 end
-
 n=10;
 
 
