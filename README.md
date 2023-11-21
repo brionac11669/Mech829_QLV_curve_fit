@@ -6,7 +6,7 @@ The macro will automatically detect if input file is an existing
 table import or a brand new .txt file. ***Remember to clean up raw .txt 
 file (experiment info left in is fine).***
 If imported data is a matrix, assign your time, force and epsilon vectors 
-to data.time, data.force and data.eps, respectively before proceeding..
+to data.time, data.force and data.eps, respectively before proceeding.
 
 ***BEFORE RUNNING THE MACRO***
 **MAKE SURE .TXT FILES GOES INTO `dataset`**
