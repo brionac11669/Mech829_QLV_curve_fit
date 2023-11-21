@@ -1,11 +1,14 @@
 %% Initialization: Put all your .txt in the same folder as this file
 % IMPORT DATA OPTION: y (existing dataset) or n (new .txt file)
+addpath('utilities','dataset')
 globals
 
 %% INSERT FILE NAME HERE, USE IF IMPORTING FROM NEW (importdata='n')
-initialize
 filename='Nov13Find-Relaxation20%20%S1';
-[testcase,b]=read_data(filename);
+initialize
+
+% filename=; % USE IF IMPORT FROM EXISTING (importdata='y')
+[testcase,b]=readdata(filename,importdata);
 %% Manual data cleanup
 data.time=testcase.Time_S;
 data.force=testcase.Fz_N;

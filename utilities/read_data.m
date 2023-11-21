@@ -1,5 +1,5 @@
 function [data_out,dedt]=read_data(filename)
-if isa(filename,'string')
+if isa(filename,'char')
     dataset=[filename,'.txt'];
     data_out=rmmissing(abs(readtable(dataset)));
     dedt=readmatrix(dataset,'range',[18 2 18 2]);
