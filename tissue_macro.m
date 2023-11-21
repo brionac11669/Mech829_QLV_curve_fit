@@ -21,8 +21,8 @@ data.ramp.q0=268; data.ramp.q1=4.073e-07; data.ramp.p1=0.137;
 run models.m;
 
 % Change model and ramp time range
-t1_3es= 14.57;t2_3es=50.23;
-t1_lin=14.57; t2_lin=42.5;
+t1_3es= 0.29 ; t2_3es= 0.42 ;
+t1_lin= 0.29 ; t2_lin= 0.42 ;
 model_relax=modelLib.relax_3es; 
 model_ramp=modelLib.linear; 
 
@@ -32,8 +32,9 @@ plot(data.time(1:s0_loc(save_count)),data.force(1:s0_loc(save_count)))
 xlabel('Ramp Time (s)');ylabel('Ramp Force (N)')
 time_confirm=input('Confirm time range?','s');
 if time_confirm=='y'||isequal(time_confirm,"yes")||time_confirm==1
-    fprintf('Press any key to start computing\n')
+    fprintf('Fitting...\n')
 else
+    fprintf('Operation canceled by user')
     return
 end
 
