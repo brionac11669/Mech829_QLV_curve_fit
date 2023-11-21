@@ -11,16 +11,13 @@ if savedata~='y'||~exist('save_count','var')
     count_var=0;
     save_count=1;
     close all
-
 else
-    if exist('ramp_fig','var')
+    try
         close(ramp_fig)
-    end
-    if exist('relax_fig','var')
         close(relax_fig)
-    end
-    if exist('raw_fig','var')
         close(raw_fig)
+    catch
+        close all
     end
     clearvars -except importdata filename savedata save_count...
         time force s0_max s0_loc n norm_fig eps0 count_var
