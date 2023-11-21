@@ -1,13 +1,11 @@
 %% Initialization: Put all your .txt in the same folder as this file
 % IMPORT DATA OPTION: y (existing dataset) or n (new .txt file)
-addpath('utilities','dataset')
-importdata='n'; clearall='n'; savedata='y';
-%% INSERT FILE NAME HERE, USE IF IMPORTING FROM NEW (importdata='n')
-filename='Nov13Find-Relaxation20%20%S1';
-initialize
+globals
 
-% filename=; % USE IF IMPORT FROM EXISTING (importdata='y')
-[testcase,b]=readdata(filename,importdata);
+%% INSERT FILE NAME HERE, USE IF IMPORTING FROM NEW (importdata='n')
+initialize
+filename='Nov13Find-Relaxation20%20%S1';
+[testcase,b]=readdata(filename);
 %% Manual data cleanup
 data.time=testcase.Time_S;
 data.force=testcase.Fz_N;
@@ -55,7 +53,7 @@ goF(3,:)=[data.ramp_lin.p1,data.ramp_lin.p2,0,...
     gof.ramp_lin.sse,gof.ramp_lin.rsquare,gof.ramp_lin.rmse];
 %% Plotting relaxation
 % Raw data
-close([1,2,3])
+
 plotraw(data)
 legend('Stress','Strain','location','east')
 

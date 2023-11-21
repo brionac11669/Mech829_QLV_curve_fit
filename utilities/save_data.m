@@ -1,5 +1,6 @@
+globals
 if savedata=='y'
-    if i==save_count
+    if count==save_count
         save_count=save_count+1;
     else
         time{save_count}=data.time;
