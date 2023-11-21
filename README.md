@@ -43,10 +43,10 @@ Example: 3ES Relaxation
 >`model_relax=modelLib.relax_3es`
 
 #### List of available models:
-> Ramp
+##### Ramp
 - Linear: 'poly1' ***(WITH THE SINGLE QUOTE)***
 - 3-Element Solid: ramp_3es
-> Relaxation
+##### Relaxation
 - 2-Element Solid: relax_2es
 - 3-Element Solid: relax_3es
 
