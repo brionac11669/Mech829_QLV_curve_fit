@@ -11,7 +11,7 @@ to data.time, data.force and data.eps, respectively before proceeding.
 ***BEFORE RUNNING THE MACRO***
 > Saving data
 To save data over multiple runs: set *savedata* to 'y'
-To run once: set *savedata* to 'n'. This will clear all data before every 
+To run once: set `savedata` to 'n'. This will clear all data before every 
 new run.
 
 > Importing rubber disc data
