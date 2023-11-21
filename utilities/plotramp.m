@@ -1,6 +1,6 @@
-function plotramp(data,s0_loc)
+function ramp_fig=plotramp(data,s0_loc)
 time_ramp=1:s0_loc-1;
-figure(2); grid on; hold on
+ramp_fig=figure; grid on; hold on
 title('Ramp Data and Fit')
 yyaxis right
 plot(data.time(time_ramp),data.eps(time_ramp),...
