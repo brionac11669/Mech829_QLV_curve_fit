@@ -10,6 +10,5 @@ end
 if max(abs(diff(data_out.Position_z__Mm(31:35))))>1e-3
     data_out(1:27,:)=[];
 end
-
 end
 
