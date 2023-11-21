@@ -11,8 +11,7 @@ to data.time, data.force and data.eps, respectively before proceeding.
 ***BEFORE RUNNING THE MACRO***
 > Saving data
 To save data over multiple runs: set *savedata* to 'y'
-To run once: set *savedata* to 'n'. This will clear all data before every 
-new run.
+To run once: set *savedata* to 'n'
 
 > Importing rubber disc data
 To import rubber disc experiments: set *importdata* to 'y'. The macro will 
@@ -24,18 +23,4 @@ Initial guesses for models are set on line 10 and 11 for
 relaxation and ramp.
 
 > Model selection
-Basic 3ES and 2ES models are defined in *models.m*. Variable *modelLib* is 
-the "library" of models that the user can later define different models.
-  
-Set *model_relax* and *model_ramp* to their respective fit models. 
-Example: 3ES Relaxation 
->> model_relax=modelLib.relax_3es
-
-### List of available models:
-> Ramp
-- Linear: 'poly1' ***(WITH THE SINGLE QUOTE)***
-- 3-Element Solid: ramp_3es
-> Relaxation
-- 2-Element Solid: relax_2es
-- 3-Element Solid: relax_3es
-
+Basic 3ES and 2ES are defined in *models.m*. Set *model_relax* and *model_

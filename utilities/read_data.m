@@ -10,7 +10,9 @@ end
 if max(abs(diff(data.Position_z__Mm(31:35))))>1e-3
     data(1:27,:)=[];
 end
-data_out.time=data.Time_S;
-data_out.force=data.Fz_N;
-data_out.eps=data.Position_z__Mm;
+if isa(data,'table')
+    data_out.time=data.Time_S;
+    data_out.force=data.Fz_N;
+    data_out.eps=data.Position_z__Mm;
+end
 end
