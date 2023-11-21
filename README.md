@@ -10,28 +10,28 @@ to data.time, data.force and data.eps, respectively before proceeding.
 
 ***BEFORE RUNNING THE MACRO***
 **MAKE SURE .TXT FILES GOES INTO `dataset`**
-> Saving data
+### Saving data
 
 To save data over multiple runs: set `savedata` to `'y'`
 To run once: set `savedata` to `'n'`. This will clear all data before every 
 new run.
 
-> Importing rubber disc data
+### Importing rubber disc data
 
 To import rubber disc experiments: set `importdata` to `'y'`. The macro will 
 import a set of cleaned-up data from two rubber disc experiments. Assign
 the appropriate variable to `filename`.
 
-> Setting initial guess (line 18-19)
+### Setting initial guess (line 18-19)
 
 Initial guesses for models are set on `line 18` for relaxation and 
 `line 19` for ramp.
 
-> Ranp Time range (line 24-25)
+### Ranp Time range (line 24-25)
 
 Edit time range for the ramp section.
 
-> Model selection
+### Model selection
 
 Basic 3ES and 2ES models are defined in `models.m`. Variable `modelLib` is 
 the "library" of models that the user can later define and add different models.
@@ -42,7 +42,7 @@ Currently the macro fits both linear and 3ES for ramp. User can manually change 
 Example: 3ES Relaxation 
 >`model_relax=modelLib.relax_3es`
 
-### List of available models:
+#### List of available models:
 > Ramp
 - Linear: 'poly1' ***(WITH THE SINGLE QUOTE)***
 - 3-Element Solid: ramp_3es
@@ -51,7 +51,7 @@ Example: 3ES Relaxation
 - 3-Element Solid: relax_3es
 
 
-> Importing new models
+### Importing new models
 User can also import new models by using the MATLAB built-in function `fit`.
 to define a model per the documentation. Curve-fitting toolbox required.
 
