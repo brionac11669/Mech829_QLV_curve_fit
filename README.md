@@ -55,7 +55,7 @@ Example: 3ES Relaxation
 User can also import new models by using the MATLAB built-in function `fit`.
 to define a model per the documentation. Curve-fitting toolbox required.
 
-##After hitting run
+## After hitting run
 The macro will first ask for ramp time range input confirmation and plot the ramp data. 
 If time input is correct, enter 'y'/'yes'/1 and follow instructions.
 If not, enter anything else to stop the script.
