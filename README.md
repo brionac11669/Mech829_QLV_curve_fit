@@ -8,7 +8,7 @@ file (experiment info left in is fine).***
 If imported data is a matrix, assign your time, force and epsilon vectors 
 to data.time, data.force and data.eps, respectively before proceeding.
 
-***BEFORE RUNNING THE MACRO***
+***BEFORE RUNNING THE MACRO*** test
 **MAKE SURE .TXT FILES GOES INTO `dataset`**
 ### Saving data
 
