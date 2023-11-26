@@ -23,15 +23,15 @@ run models.m;
 % Change model and ramp time range
 t1_3es= 0.29 ; t2_3es= 0.42 ;
 t1_lin= 0.29 ; t2_lin= 0.42 ;
-model_relax=modelLib.relax_3es; 
+model_relax=modelLib.relax_2es; 
 model_ramp=modelLib.linear; 
 
 %% More prep work
-figure(98);grid on;
+figure(98);grid on;hold on;
 plot(data.time(1:s0_loc(save_count)),data.force(1:s0_loc(save_count)))
-xlabel('Ramp Time (s)');ylabel('Ramp Force (N)')
-time_confirm=input('Confirm time range?','s');
-if time_confirm=='y'||isequal(time_confirm,"yes")||time_confirm==1
+xlabel('Ramp Time (s)'); ylabel('Ramp Force (N)')
+time_confirm=input('Confirm time range? ','s');
+if time_confirm=='y'||isequal(time_confirm,"yes")||time_confirm=='1'
     fprintf('Fitting...\n')
 else
     fprintf('Operation canceled by user')
