@@ -14,6 +14,10 @@ relax3es=fittype(@(q0,q1,p1,t)...
 ramp3es = fittype(@(q0,q1,p1,t)...
     b*(q0*t-q1*(exp(-t/p1)-1)+p1*q0*(exp(-t/p1)-1)),'independent','t');
 
+% Ramp G(t)
+G=fittype(@(a,b,c,d,g,h,t) a*exp(-b*t)+c*exp(-d*t)+g*exp(-h*t),'independent','t');
+sig_strain=fittype(@(ae,be,lam) ae*(exp(be*lam)-1),'independent','lam');
+
 modelLib.relax_2es.eqn=relax2es;
 modelLib.relax_2es.type="Relax";
 
