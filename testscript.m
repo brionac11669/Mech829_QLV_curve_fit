@@ -14,10 +14,11 @@ disp(gof)
 % [result,gof]=fit(data.time(19977:end),data.force(19977:end),modelLib.relax_3es.eqn,'startpoint',[1000 1000 1000])
 time_r=data.time(1:17001);force_r=data.force(1:17001);
 [result,gof]=fit(data.time(1:17001),data.force(1:17001),ramp_red,...
-    'startpoint',[1 1e4 1 1e4 1 1e4],'lower',[0 0 0 0 0 0],...
-    'robust','lar')
+    'startpoint',[1 1 1 1 1 1],'lower',[0 0 0 0 0 0],...
+    'robust','lar','maxiter',1e6)
+% 'startpoint',[1 1e3 1 1e3 1 1e3]
 figure
-hold on
+hold on, grid on
 % plot(data.time(19977:end),data.force(19977:end))
 % plot(data.time(19977:end),result(data.time(19977:end)))
 plot(data.time(1:17001),data.force(1:17001))
