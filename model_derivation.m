@@ -1,4 +1,10 @@
-syms q0 q1 p1 t ti b
-y2es(ti)=q0*(1-exp(-ti/p1))+(q1/p1)*exp(-ti/p1);
+syms a b c d g h ti ep t
+g=a*exp(-b*ti)+c*exp(-d*ti)+g*exp(-h*ti)
+sigep=ae*(exp(be*ep)-1)
+dsde=ae*be*exp(be*ep)
+sig=int(g*dsde*dedt,ti,0,t)
 
-y_2es=int(q0*(1-exp(-(t-ti)/p1))+(q1/p1)*exp(-(t-ti)/p1),ti,0,t)
+sig=-(a*ae*be*dedt*exp(be*ep)*(exp(-b*t) - 1))/b -...
+    (ae*be*c*dedt*exp(be*ep)*(exp(-d*t) - 1))/d - ...
+    (ae*be*dedt*g*exp(be*ep)*(exp(-h*t) - 1))/h
+

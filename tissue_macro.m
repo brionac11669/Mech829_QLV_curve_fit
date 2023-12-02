@@ -5,37 +5,35 @@ savedata='n';importdata='n';
 filename='Nov23_S1_20_01';
 %% Importing data based on settting & manual cleanup
 initialize
-[data,b]=read_data(filename);
+[data,dedt]=read_data(filename);
 %% Variable and model prep
 % Find maximum stress
 s0_max(save_count)=max(data.force); % max stress
 s0_loc(save_count)=find(data.force==s0_max(save_count),1,'first'); %find index of maxstress
-eps0(save_count)=(max(data.eps)-min(data.eps))/h; % Find maximum strain
-data.eps=abs(data.eps-max(data.eps))/h;
+eps0(save_count)=(max(data.eps)-min(data.eps))/height; % Find maximum strain
+data.eps=abs(data.eps-max(data.eps))/height;
+exclude_loc=find(data.eps(1:s0_loc)<exclude,1,'last');
 
 save_data
 %% Parameter Guess & Model Selection
-data.relax.q0=480; data.relax.q1=4790; data.relax.p1=.9;
+data.relax.q0=1000; 
+data.relax.q1=1000; 
+data.relax.p1=1000;
 run models.m;
 
 % Load model and ramp time range
+figure(98);grid on;hold on
+plot(data.time(1:s0_loc(save_count)),data.force(1:s0_loc(save_count)))
 t1_3es=input('t1_3es (s): ') ; t2_3es=input('t2_3es (s): ');
 t1_lin=input('t1_lin (s): ') ; t2_lin=input('t2_lin (s): ');
-
-
-
-
+plot([t1_lin t1_lin],[0 max(data.force)],'r-');plot([t2_lin t2_lin],[0 max(data.force)],'r-')
+plot([t1_3es t1_3es],[0 max(data.force)],'k-');plot([t2_3es t2_3es],[0 max(data.force)],'k-')
+xlabel('Ramp Time (s)'); ylabel('Ramp Force (N)')
 
 
 model_relax=modelLib.relax_3es; 
 model_ramp=modelLib.linear;
 %% More prep work
-figure(98);grid on;hold on
-plot(data.time(1:s0_loc(save_count)),data.force(1:s0_loc(save_count)))
-plot([t1_lin t1_lin],[0 max(data.force)],'r-');plot([t2_lin t2_lin],[0 max(data.force)],'r-')
-plot([t1_3es t1_3es],[0 max(data.force)],'k-');plot([t2_3es t2_3es],[0 max(data.force)],'k-')
-xlabel('Ramp Time (s)'); ylabel('Ramp Force (N)')
-
 % Check ramp time fit interval
 check_range
 
@@ -76,7 +74,7 @@ ramp_fig=plotramp(...
 legend('Stress','3ES Ramp Fit','Linear Ramp Fit','Strain',...
     'location','south')
 
-% Relaxation plot
+%% Relaxation plot
 relax_fig=plotrelax(data,timerange_relax);
 legend('Stress','Relaxation Curve Fit')
 
