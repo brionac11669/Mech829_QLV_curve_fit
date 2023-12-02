@@ -1,8 +1,9 @@
 %% Initialization: Put all your .txt in the same folder as this file
 addpath('utilities','dataset')
 %% INSERT FILE NAME/data table import HERE
-savedata='y';importdata='n';
-filename='Groupmonday_Nov2_Test1S1';
+
+savedata='n';importdata='n';
+filename='Nov23_S1_20_01';
 %% Importing data based on settting & manual cleanup
 initialize
 [data,b]=read_data(filename);
@@ -17,13 +18,16 @@ save_data
 
 %% Parameter Guess & Model Selection
 data.relax.q0=480; data.relax.q1=4790; data.relax.p1=.9;
-data.ramp.q0=268; data.ramp.q1=4.073e-07; data.ramp.p1=0.137;
+% data.ramp.q0=268; data.ramp.q1=4.073e-07; data.ramp.p1=0.137;
+data.ramp.q0=1e4; data.ramp.q1=1e4; data.ramp.p1=1e4;
 % p1=16.5959; q0=1.2893; q1=23.2326;
 run models.m;
 
 % Change model and ramp time range
+
 t1_3es= 20 ; t2_3es= 40 ;
-t1_lin= 20 ; t2_lin= 40;
+
+t1_lin= 0.29 ; t2_lin= 0.42 ;
 model_relax=modelLib.relax_2es; 
 model_ramp=modelLib.linear; 
 
@@ -33,7 +37,12 @@ plot(data.time(1:s0_loc(save_count)),data.force(1:s0_loc(save_count)))
 plot([t1_lin t1_lin],[0 max(data.force)],'r-');plot([t2_lin t2_lin],[0 max(data.force)],'r-')
 plot([t1_3es t1_3es],[0 max(data.force)],'k-');plot([t2_3es t2_3es],[0 max(data.force)],'k-')
 xlabel('Ramp Time (s)'); ylabel('Ramp Force (N)')
-time_confirm=input('Confirm time range (y/n)? ','s');
+
+% Check time range
+figure(98);grid on;hold on;
+plot(data.time(1:s0_loc(save_count)),data.force(1:s0_loc(save_count)),'.')
+xlabel('Ramp Time (s)'); ylabel('Ramp Force (N)')
+time_confirm=input(sprintf('Confirm time range: [%f %f] (y/n)? ',t1_3es,t2_3es),'s');
 if time_confirm=='y'||isequal(time_confirm,"yes")||time_confirm=='1'
     fprintf('Fitting...\n')
 else
