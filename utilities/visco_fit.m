@@ -28,6 +28,7 @@ for i=1:n
         fitops=set(fitops,'StartPoint',[q0,q1,p1],'Lower',[0,0,0]);
     end
 end
+
 if n~=1
     fprintf('%s 3ES Curve Fit Result\n',model.type)
     disp(data_out)

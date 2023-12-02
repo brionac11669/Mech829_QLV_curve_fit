@@ -4,6 +4,6 @@ title('Raw data')
 plot(data.time,data.force,'.')
 xlabel('Time (s)'); ylabel('Force (N)')
 yyaxis right
-plot(data.time,data.eps,'-')
+plot(data.time,abs(data.eps-max(data.eps)),'-')
 xlabel('Time (s)'); ylabel('Strain (m/m)')
 end

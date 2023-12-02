@@ -1,8 +1,8 @@
 %% Initialization: Put all your .txt in the same folder as this file
 addpath('utilities','dataset')
 %% INSERT FILE NAME/data table import HERE
-savedata='y';importdata='n';
-filename='Groupmonday_Nov2_Test1S1';
+savedata='n';importdata='n';
+filename='Groupmonday_Nov2_Test3S120%';
 %% Importing data based on settting & manual cleanup
 initialize
 [data,b]=read_data(filename);
@@ -22,8 +22,8 @@ data.ramp.q0=268; data.ramp.q1=4.073e-07; data.ramp.p1=0.137;
 run models.m;
 
 % Change model and ramp time range
-t1_3es= 20 ; t2_3es= 40 ;
-t1_lin= 20 ; t2_lin= 40;
+t1_3es= 20 ; t2_3es= 180 ;
+t1_lin= 40 ; t2_lin= 160;
 model_relax=modelLib.relax_2es; 
 model_ramp=modelLib.linear; 
 
@@ -33,7 +33,7 @@ plot(data.time(1:s0_loc(save_count)),data.force(1:s0_loc(save_count)))
 plot([t1_lin t1_lin],[0 max(data.force)],'r-');plot([t2_lin t2_lin],[0 max(data.force)],'r-')
 plot([t1_3es t1_3es],[0 max(data.force)],'k-');plot([t2_3es t2_3es],[0 max(data.force)],'k-')
 xlabel('Ramp Time (s)'); ylabel('Ramp Force (N)')
-time_confirm=input('Confirm time range (y/n)? ','s');
+time_confirm=input('Confirm time range? ','s');
 if time_confirm=='y'||isequal(time_confirm,"yes")||time_confirm=='1'
     fprintf('Fitting...\n')
 else
