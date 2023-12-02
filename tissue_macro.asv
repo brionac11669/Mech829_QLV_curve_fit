@@ -16,17 +16,15 @@ data.eps=abs(data.eps-max(data.eps))/h;
 save_data
 %% Parameter Guess & Model Selection
 data.relax.q0=480; data.relax.q1=4790; data.relax.p1=.9;
+data.ramp.q0=1e4; data.ramp.q1=1e4; data.ramp.p1=1e4;
 run models.m;
 
 % Load model and ramp time range
 t1_3es=input('t1_3es (s): ') ; t2_3es=input('t2_3es (s): ');
 t1_lin=input('t1_lin (s): ') ; t2_lin=input('t2_lin (s): ');
-
-
-
-
-
-
+[ramp_strain,gof]=fit(...
+    data.eps(1:s0_loc(save_count)),data.force(1:s0_loc(save_count)),...
+    modelLib.ramp_eps.eqn)
 model_relax=modelLib.relax_3es; 
 model_ramp=modelLib.linear;
 %% More prep work
@@ -51,7 +49,11 @@ goF{save_count}=[data.relax.q0,data.relax.q1,data.relax.p1,...
     gof.relax.sse,gof.relax.rsquare,gof.relax.rmse];
 %% Ramp fit #n times using selected model with updated guess
 % Ramp Curve Fit
-
+[data.ramp_3es,gof.ramp_3es,gof.ramp_3es.output]=...
+    visco_fit(modelLib.ramp_3es,...
+    data,timerange_ramp3es,n,data.ramp.q0,data.ramp.q1,data.ramp.p1);
+goF{save_count}(2,:)=[data.ramp_3es.q0,data.ramp_3es.q1,data.ramp_3es.p1,...
+    gof.ramp_3es.sse,gof.ramp_3es.rsquare,gof.ramp_3es.rmse];
 
 % Linear Curve Fit
 [data.ramp_lin,gof.ramp_lin,gof.ramp_lin.output]=...

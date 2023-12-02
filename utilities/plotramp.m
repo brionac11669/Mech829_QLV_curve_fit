@@ -12,5 +12,5 @@ yyaxis left
 plot(data.time(1:s0_loc-1),data.force(1:s0_loc-1),'.')
 plot(data.time(time_3es),data.ramp_3es(data.time(time_3es)),'m-')
 plot(data.time(time_lin),data.ramp_lin(data.time(time_lin)),'k-')
-ylabel('Force (N)')
+ylabel('Force (gf)')
 end

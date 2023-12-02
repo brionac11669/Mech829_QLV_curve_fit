@@ -36,4 +36,4 @@ modelLib.linear.type="Ramp";
 ae(4)=67.04;
 be(4)=31.87;
 exclude(4)=0.07;
-exclude_loc(4)=find(data.eps(1:s0_loc)<exclude(4),1,'last');
+exclude_loc(4)=

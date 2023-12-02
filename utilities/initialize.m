@@ -22,7 +22,8 @@ else
     clearvars -except importdata filename savedata save_count...
         time force s0_max s0_loc n norm_fig eps0 count_var
 end
-
+area=11.7^2/1e6*pi;
+h=6.33;
 n=10;
 
 
