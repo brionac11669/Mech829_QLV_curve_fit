@@ -24,14 +24,13 @@ the appropriate variable to `filename`.
 
 ### Setting initial guess (line 18-19)
 
-Initial guesses for models are set on `line 18` for relaxation and 
-`line 19` for ramp.
+Initial guesses for models are in `Parameter Guess & Model Selection`
 
-### Ranp Time range (line 24-25)
+### Ranp Time range
 
-Edit time range for the ramp section.
+Input time range for the ramp section.
 
-### Model selection
+### Model selection OUT OF DATE DONT READ FURTHER
 
 Basic 3ES and 2ES models are defined in `models.m`. Variable `modelLib` is 
 the "library" of models that the user can later define and add different models.
