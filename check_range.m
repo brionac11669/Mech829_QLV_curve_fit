@@ -22,7 +22,7 @@ else
 end
 try close 98;
 catch 
-    fprintf('Figure 98 (Ramp stress/time) closed');
+    fprintf('Figure 98 (Ramp stress/time) closed\n');
 end
 
 % timerange_ramplin=[t1_lin,t2_lin];

@@ -12,7 +12,7 @@ fprintf(['Closing Ramp stress/strain figure. \n' ...
 pause
 try close 97;
 catch 
-    fprintf('Figure 97 (Ramp stress/strain) closed');
+    fprintf('Figure 97 (Ramp stress/strain) closed\n');
 end
 ae=result.ae;be=result.be;
 % ramp_red=fittype(@(a,b,c,d,g,h,t) ...

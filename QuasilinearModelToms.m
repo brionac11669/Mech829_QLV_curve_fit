@@ -17,8 +17,8 @@ A = 0.0013;
 B = 11.3;
 
 %Strain function parameters for ramp and hold
-t_R = 34.4;        %time end of ramp in sec
-e_R = 0.546;       %strain end of ramp
+t_R = .81;        %time end of ramp in sec
+e_R = 0.2;       %strain end of ramp
 Beta = e_R/t_R;    %slope of the ramped strain increase in 1/sec
 cycles = 1;        %total number of cycles
 

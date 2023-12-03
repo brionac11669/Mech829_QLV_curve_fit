@@ -66,12 +66,13 @@ be =       35.61
 ramp eqn: -.2*(a*71.53*35.61*(exp(-b*t)/(b + 35.61*.2) -exp(35.61*.2*t)/(b + 35.61*.2)) +71.53*35.61*c*(exp(-d*t)/(d + 35.61*.2) -exp(35.61*.2*t)/(d + 35.61*.2)) +71.53*35.61*g*(exp(-h*t)/(h + 35.61*.2) -exp(35.61*.2*t)/(h + 35.61*.2)));
 ramp time: 0.3 0.8
 ramp fit:
-a =     0.01839
-b =     2.897
-c =     0.01839
-d =     2.897
-g =     0.01839
-h =       2.897
+a =     0.0881
+b =     0.0859
+c =     0.0310
+d =     0.0860
+g =      0.0021
+h =       0.1000
+
            sse: 2.3882e+05
        rsquare: 0.9909
            dfe: 45
@@ -102,12 +103,12 @@ be =        43.96
           rmse: 3.1788
 ramp eqn:-(a*0.2033*43.96*1e-3.*exp(43.96*1e-3*t).*(exp(-b*t)-1))/b-(0.2033*43.96*c*1e-3.*exp(43.96*1e-3*t).*(exp(-d*t)-1))/d-(0.2033*43.96*1e-3*g.*exp(43.96*1e-3*t).*(exp(-h*t)-1))/h
 ranp time: 0 177
-        a =       6.793  (-4.026e+05, 4.026e+05)
-       b =      0.8594  (-5.172e+04, 5.172e+04)
-       c =       6.793  (-3.984e+05, 3.984e+05)
-       d =      0.8609  (-1.001e+04, 1.001e+04)
-       g =       6.793  (-3.863e+05, 3.863e+05)
-       h =      0.8592  (-4.701e+04, 4.701e+04)
+       a =       6.793
+       b =      0.8594
+       c =       6.793
+       d =      0.8609
+       g =       6.793
+       h =      0.8592
            sse: 1.6826e+05
        rsquare: 0.9991
            dfe: 17695
@@ -118,7 +119,7 @@ ranp time: 0 177
 relax fit:
 q0 =        1168
 q1 =   3.528e+05
-p1 =       25.08  (24.93, 25.24)
+p1 =       25.08
            sse: 1.9402e+05
        rsquare: 0.9953
            dfe: 6171
@@ -176,3 +177,49 @@ p1 =       11.62
            dfe: 6019
     adjrsquare: 0.8080
           rmse: 29.6756
+---------------------------------------
+- 3-element solid (Kelvin model):
+    Relaxation
+    - Fits relatively well for relaxation, is more robust for both slow and fast ramp velocity
+    
+    Ramp
+    - Fits well for slower velocity ramp, cannot fit faster ramp due to model is not aggressive enough.
+
+- Reduced relaxation (Tom's paper)
+    Relaxation
+    - Fits very well for relaxation but only for slow ramp velocity as model is not relaxing fast enough to accomodate fast ramp cases
+    
+    Ramp
+    - Mostly fits very well for both slow and fast ramp velocity due to being more robust.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

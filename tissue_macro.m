@@ -19,7 +19,7 @@ save_data
 %% Parameter Guess & Model Selection
 % guess_relax=[1e3 1e5 20];
 guess_relax=[0.3 0.04 .3 .004 .4 .3];
-guess_ramp=[.01 .001 .02 .005 .05 .001];
+guess_ramp=[0.0881 0.0859 0.0310 0.0860 0.0021 0.1000];
 guess_relax3es=[1e3 5e4 10];
 %% More prep work
 check_range
@@ -34,7 +34,7 @@ if runstat==0
     redrelax_fit(modelLib.relax_eps,...
     data,timerange_relax,...
     guess_relax);
-
+    % [0.01839 2.897 0.01839 2.897 0.01839 2.897]);...
 
 [data.relax_3es,gof.relax_3es]=fit(...
     data.time(s0_loc:end),data.force(s0_loc:end),...
@@ -73,10 +73,10 @@ legend('Stress','Reduced Relaxation Fit','Strain',...
     'location','southwest')
 
 %% Relaxation plot
-relax_fig=plotrelax(data,data.relax_3es,timerange_relax);
-% plotrelax(data,data.relax_eps,timerange_relax);
+% relax_fig=plotrelax(data,data.relax_3es,timerange_relax);
+plotrelax(data,data.relax_eps,timerange_relax);
 
-legend('Stress','Relaxation Curve Fit')
+%legend('Stress','3ES Relaxation Fit','Reduced Relaxation Fit')
 
 %% Normalized relaxation curve
 [norm_fig,count]=plot_norm_relax...

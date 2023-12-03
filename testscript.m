@@ -35,20 +35,20 @@ plot(data.time(1:exclude_loc),result(data.time(1:exclude_loc)))
 time=data.time(s0_loc:end);
 force=data.force(s0_loc:end);
 %%
-dedt=.1992;
-a =     0.02554  ;
-b =         8.7  ;
-c =     0.02554 ;
-d =       8.923 ;
-g =     0.02554 ;
-h =        8.77 ;
-ae = 0.01277; 
-be = 57.35;
-tramp=0:.01:1.27;
-sig_ramp=-dedt*(a*ae*be*(exp(-b*tramp)/(b + be*dedt) -...
-    exp(be*dedt*tramp)/(b + be*dedt)) +...
-    ae*be*c*(exp(-d*tramp)/(d + be*dedt) -...
-    exp(be*dedt*tramp)/(d + be*dedt)) +...
-    ae*be*g*(exp(-h*tramp)/(h + be*dedt) -...
-    exp(be*dedt*tramp)/(h + be*dedt)));
+dedt=.2459;
+a =     0.0881
+b =     0.0859
+c =     0.0310
+d =     0.0860
+g =      0.0021
+h =       0.1000
+ae =   71.53;
+be = 35.61;
+t=0:.001:.81;
+sig_ramp=-dedt*(a*ae*be*(exp(-b*t)/(b+be*dedt)-exp(be*dedt*t)/(b+be*dedt)...
+                    )+ae*be*c*(exp(-d*t)/(d+be*dedt)-exp(be*dedt*t)/(d+...
+                    be*dedt))+ae*be*g*(exp(-h*t)/(h+be*dedt)-exp(be*dedt*t)...
+                    /(h+be*dedt)));
+
+figure
 plot(sig_ramp)

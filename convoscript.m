@@ -4,26 +4,28 @@ clc
 
 % G(t) Parameters, Toms et al., A2
 
-a =     0.02554  ;
-b =         20  ;
-c =    .02 ;
-d =       8.923 ;
-g =     0.012554 ;
-% h =        8.77 ;
-h=.003;
-
+% a =     0.881;b =     0.0859;c =     0.0310;
+% d =     0.0860;g =      0.0021;h =       0.1000;
+% a =     0.07;
+% b =     2.897;
+% c =     0.04;
+% d =     2.897;
+% g =     0.04;
+% h =       2.897;
+[a,b,c,d,g,h]=deal(0.0690, 2.9246, 0.0025, 2.0319, 0.0534, 0.1484);
 % Elastic stress-strain parameters, Toms et al., A2
 
-A = 0.01277; 
-B = 57.35;
+A =       71.53;
+B =       35.61;
 
 %Strain function parameters for ramp and hold
-t_R = 1.27;        %time end of ramp in sec
+t_R = .81;        %time end of ramp in sec
 e_R = 0.1992;       %strain end of ramp
 Beta = .2;    %slope of the ramped strain increase in 1/sec
+% Beta=e_R/t_R
 cycles = 1;        %total number of cycles
 
-t_max = 2*t_R*cycles;   %total time in sec
+t_max = 8;   %total time in sec
 
 %Other system parameters
 
@@ -78,7 +80,7 @@ end
 
 %% test section
 ae=A;be=B;dedt=Beta;tR=t_R;trelax=tR:dT:t_max;
-tramp=0:dT:1.28;
+tramp=0:dT:tR;
 % sig_ramp=dedt*(...
 %     (ae*be*c*exp(be*e_R).*(exp(-d*(tramp - tR)) - 1))/d +...
 %     (ae*be*g*exp(be*e_R).*(exp(-h*(tramp - tR)) - 1))/h +...
@@ -92,12 +94,10 @@ tramp=0:dT:1.28;
 %     (ae*be*c*exp(be*dedt*tramp).*(exp(-d*tramp) - 1))/d +...
 %     (ae*be*g*exp(be*dedt*tramp).*(exp(-h*tramp) - 1))/h);
 
-sig_ramp=-dedt*(a*ae*be*(exp(-b*tramp)/(b + be*dedt) -...
-    exp(be*dedt*tramp)/(b + be*dedt)) +...
-    ae*be*c*(exp(-d*tramp)/(d + be*dedt) -...
-    exp(be*dedt*tramp)/(d + be*dedt)) +...
-    ae*be*g*(exp(-h*tramp)/(h + be*dedt) -...
-    exp(be*dedt*tramp)/(h + be*dedt)));
+sig_ramp=-dedt*(a*ae*be*(exp(-b*tramp)/(b+be*dedt)-exp(be*dedt*tramp)/(b+be*dedt)...
+                    )+ae*be*c*(exp(-d*tramp)/(d+be*dedt)-exp(be*dedt*tramp)/(d+...
+                    be*dedt))+ae*be*g*(exp(-h*tramp)/(h+be*dedt)-exp(be*dedt*tramp)...
+                    /(h+be*dedt)));
  %%
 sig_relax=- dedt*(a*ae*be*(exp(be*dedt*trelax)/(b + be*dedt) -...
     (exp(be*dedt*tR).*exp(-b*trelax)*exp(b*tR))/(b + be*dedt)) +...
@@ -119,11 +119,11 @@ sig_relax=- dedt*(a*ae*be*(exp(be*dedt*trelax)/(b + be*dedt) -...
 % xlabel('Time (s)')
 % ylabel('Strain')
 figure(90)
-plot (Response(:,1), Response(:,3))
-hold on; 
+plot (Response(1:64,1), Response(1:64,3),'^-')
+hold on; grid on
 plot(tramp,sig_ramp)
 plot(trelax,sig_relax)
-
+legend('Convolution','Analytical Ramp','Analytical Relax')
 title('Stress versus time')
 xlabel('Time (s)')
 ylabel('Stress')
