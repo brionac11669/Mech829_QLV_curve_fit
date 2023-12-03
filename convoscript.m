@@ -1,25 +1,26 @@
-% clear all
+
 clc
-close all
+
 
 % G(t) Parameters, Toms et al., A2
 
-a = 0.0846;
-b = 0.154;
-c = 0.148;
-d = 0.0028;
-g = 0.7623;
-h = 0.00003;
+a =     0.02554  ;
+b =         20  ;
+c =    .02 ;
+d =       8.923 ;
+g =     0.012554 ;
+% h =        8.77 ;
+h=.003;
 
 % Elastic stress-strain parameters, Toms et al., A2
 
-A = 0.0013; 
-B = 11.3;
+A = 0.01277; 
+B = 57.35;
 
 %Strain function parameters for ramp and hold
-t_R = 34.4;        %time end of ramp in sec
-e_R = 0.546;       %strain end of ramp
-Beta = e_R/t_R;    %slope of the ramped strain increase in 1/sec
+t_R = 1.27;        %time end of ramp in sec
+e_R = 0.1992;       %strain end of ramp
+Beta = .2;    %slope of the ramped strain increase in 1/sec
 cycles = 1;        %total number of cycles
 
 t_max = 2*t_R*cycles;   %total time in sec
@@ -77,7 +78,7 @@ end
 
 %% test section
 ae=A;be=B;dedt=Beta;tR=t_R;trelax=tR:dT:t_max;
-tramp=0:dT:tR;
+tramp=0:dT:1.28;
 % sig_ramp=dedt*(...
 %     (ae*be*c*exp(be*e_R).*(exp(-d*(tramp - tR)) - 1))/d +...
 %     (ae*be*g*exp(be*e_R).*(exp(-h*(tramp - tR)) - 1))/h +...
@@ -97,7 +98,7 @@ sig_ramp=-dedt*(a*ae*be*(exp(-b*tramp)/(b + be*dedt) -...
     exp(be*dedt*tramp)/(d + be*dedt)) +...
     ae*be*g*(exp(-h*tramp)/(h + be*dedt) -...
     exp(be*dedt*tramp)/(h + be*dedt)));
- 
+ %%
 sig_relax=- dedt*(a*ae*be*(exp(be*dedt*trelax)/(b + be*dedt) -...
     (exp(be*dedt*tR).*exp(-b*trelax)*exp(b*tR))/(b + be*dedt)) +...
     ae*be*c*(exp(be*dedt*trelax)/(d + be*dedt) -...
@@ -111,21 +112,22 @@ sig_relax=- dedt*(a*ae*be*(exp(be*dedt*trelax)/(b + be*dedt) -...
     ae*be*g*(exp(-h*trelax)/(h + be*dedt) -...
     exp(be*dedt*trelax)/(h + be*dedt)));
 %%
-close all
+% close all
 % figure
 % plot (Response(:,1), Response(:,2))
 % title('Strain versus time')
 % xlabel('Time (s)')
 % ylabel('Strain')
-figure
+figure(90)
 plot (Response(:,1), Response(:,3))
 hold on; 
-plot(trelax,sig_relax)
 plot(tramp,sig_ramp)
+plot(trelax,sig_relax)
+
 title('Stress versus time')
 xlabel('Time (s)')
 ylabel('Stress')
-
+% 
 % figure
 % plot (Response(:,2), Response(:,3))
 % title('Stress versus Strain')

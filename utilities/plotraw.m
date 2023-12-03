@@ -1,5 +1,5 @@
 function raw_fig=plotraw(data)
-raw_fig=figure; grid on; hold on
+raw_fig=figure(1); grid on; hold on
 title('Raw data')
 plot(data.time,data.force,'.')
 xlabel('Time (s)'); ylabel('Force (gf)')

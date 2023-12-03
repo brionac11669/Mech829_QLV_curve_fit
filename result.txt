@@ -1,0 +1,176 @@
+test1:
+ae =        23.5
+be =       17.59
+           sse: 1.1007e+03
+       rsquare: 0.9999
+           dfe: 10074
+    adjrsquare: 0.9999
+          rmse: 0.3306
+
+ramp time: 0 100
+ramp eqn:-(a*23.4377*17.6228*1e-3.*exp(17.6228*1e-3*t).*(exp(-b*t)-1))/b-(23.4377*17.6228*c*1e-3.*exp(17.6228*1e-3*t).*(exp(-d*t)-1))/d-(23.4377*17.6228*1e-3*g.*exp(17.6228*1e-3*t).*(exp(-h*t)-1))/h
+ramp fit:
+a =      0.3311
+b =   4.436e-14
+c =      0.3311
+d =    4.44e-14
+g =      0.3311
+h =   4.437e-14
+           sse: 1.1277e+03
+       rsquare: 0.9999
+           dfe: 9998
+    adjrsquare: 0.9999
+          rmse: 0.3358
+
+3ES relax eqn: 1e-3*(q0*t-q1*(exp(-t/p1)-1)+p1*q0*(exp(-t/p1)-1))-1e-3*(q0*(t-100.75)-q1*(exp(-(t-100.75)/p1)-1)+p1*q0*(exp(-(t-100.75)/p1)-1))
+relax fit: 
+q0 =         392
+q1 =   7.627e+04
+p1 =       20.46
+           sse: 6.9190e+03
+       rsquare: 0.9962
+           dfe: 6022
+    adjrsquare: 0.9962
+          rmse: 1.0719
+
+Reduced relax fit:
+a =       0.711
+b =    0.007387
+c =       1.421
+d =     0.06774
+g =       1.349
+h =      0.3418
+           sse: 244.5563
+       rsquare: 0.9999
+           dfe: 6019
+    adjrsquare: 0.9999
+          rmse: 0.2016
+
+
+
+guess_relax=[7000 400 20];
+guess_reduce=[1 .02 2 .1 .2 .1];
+guess_ramp=[1 3 1 3 1 3];
+----------------------------------------------
+test2:
+ae =       71.53
+be =       35.61
+           sse: 8.0186e+04
+       rsquare: 0.9971
+           dfe: 52
+    adjrsquare: 0.9970
+          rmse: 39.2688
+
+ramp eqn: -.2*(a*71.53*35.61*(exp(-b*t)/(b + 35.61*.2) -exp(35.61*.2*t)/(b + 35.61*.2)) +71.53*35.61*c*(exp(-d*t)/(d + 35.61*.2) -exp(35.61*.2*t)/(d + 35.61*.2)) +71.53*35.61*g*(exp(-h*t)/(h + 35.61*.2) -exp(35.61*.2*t)/(h + 35.61*.2)));
+ramp time: 0.3 0.8
+ramp fit:
+a =     0.01839
+b =     2.897
+c =     0.01839
+d =     2.897
+g =     0.01839
+h =       2.897
+           sse: 2.3882e+05
+       rsquare: 0.9909
+           dfe: 45
+    adjrsquare: 0.9899
+          rmse: 72.8495
+
+3ES relax eqn: 0.2*(q0*t-q1*(exp(-t/p1)-1)+p1*q0*(exp(-t/p1)-1))-0.2*(q0*(t-.81)-q1*(exp(-(t-.81)/p1)-1)+p1*q0*(exp(-(t-.81)/p1)-1))
+relax fit:
+q0 =        1213
+q1 =   4.912e+04
+p1 =       5.437
+           sse: 2.6738e+07
+       rsquare: 0.9205
+           dfe: 6056
+    adjrsquare: 0.9205
+          rmse: 66.4468
+
+guess_relax=[1e3 5e4 10];
+guess_ramp=[1 3 1 3 1 3];
+----------------------------------------------
+test3:
+ae =        0.2033
+be =        43.96
+           sse: 1.7885e+05
+       rsquare: 0.9990
+           dfe: 17699
+    adjrsquare: 0.9990
+          rmse: 3.1788
+ramp eqn:-(a*0.2033*43.96*1e-3.*exp(43.96*1e-3*t).*(exp(-b*t)-1))/b-(0.2033*43.96*c*1e-3.*exp(43.96*1e-3*t).*(exp(-d*t)-1))/d-(0.2033*43.96*1e-3*g.*exp(43.96*1e-3*t).*(exp(-h*t)-1))/h
+ranp time: 0 177
+        a =       6.793  (-4.026e+05, 4.026e+05)
+       b =      0.8594  (-5.172e+04, 5.172e+04)
+       c =       6.793  (-3.984e+05, 3.984e+05)
+       d =      0.8609  (-1.001e+04, 1.001e+04)
+       g =       6.793  (-3.863e+05, 3.863e+05)
+       h =      0.8592  (-4.701e+04, 4.701e+04)
+           sse: 1.6826e+05
+       rsquare: 0.9991
+           dfe: 17695
+    adjrsquare: 0.9991
+          rmse: 3.0837
+
+3ES relax eqn:1e-3*(q0*t-q1*(exp(-t/p1)-1)+p1*q0*(exp(-t/p1)-1))-1e-3*(q0*(t-  199.7600)-q1*(exp(-(t-  199.7600)/p1)-1)+p1*q0*(exp(-(t-199.7600)/p1)-1))
+relax fit:
+q0 =        1168
+q1 =   3.528e+05
+p1 =       25.08  (24.93, 25.24)
+           sse: 1.9402e+05
+       rsquare: 0.9953
+           dfe: 6171
+    adjrsquare: 0.9952
+          rmse: 5.6072
+
+Reduced Relax fit:
+a =      0.3295
+b =     0.04025
+c =      0.2629
+d =    0.004221
+g =      0.3802
+h =      0.3015  (0.2891, 0.3139)
+           sse: 2.9228e+04
+       rsquare: 0.9993
+           dfe: 6168
+    adjrsquare: 0.9993
+          rmse: 2.1769
+
+guess_relax=[1 1 1];
+guess_reduce=[0.3 0.04 .3 .004 .4 .3]
+guess_ramp=[7 1 7 1 7 1];
+--------------------------------------------
+test4:
+ae =     0.01277 
+be =       57.35
+           sse: 9.9397e+03
+       rsquare: 0.9982
+           dfe: 99
+    adjrsquare: 0.9982
+          rmse: 10.0200
+
+ramp eqn: [that massive eqn]
+ramp time: 0.3 1.27
+ramp fit:
+a =      0.2495
+b =       317.6
+c =    0.002186
+d =       4.535
+g =     0.01109
+h =       4.392
+           sse: 2.3983e+04
+       rsquare: 0.9956
+           dfe: 92
+    adjrsquare: 0.9953
+          rmse: 16.1457
+
+3ES relax eqn: dedt*(q0*t-q1*(exp(-t/p1)-1)+p1*q0*(exp(-t/p1)-1))-dedt*(q0*(t-tR))-q1*(exp(-(t-tR)/p1)-1)+p1*q0*(exp(-(t-tR)/p1)-1))
+relax fit:
+q0 =         922
+q1 =   2.265e+04
+p1 =       11.62
+           sse: 5.3006e+06
+       rsquare: 0.8081
+           dfe: 6019
+    adjrsquare: 0.8080
+          rmse: 29.6756

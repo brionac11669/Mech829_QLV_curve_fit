@@ -18,11 +18,7 @@ ramp3es = fittype(@(q0,q1,p1,t)...
 G=fittype(@(a,b,c,d,g,h,t) a*exp(-b*t)+c*exp(-d*t)+g*exp(-h*t),'independent','t');
 ramp_eps=fittype(@(ae,be,ep) ae*(exp(be*ep)-1),'independent','ep');
 
-ramp_red=fittype(@(a,b,c,d,g,h,t) ...
--(a*ae*be*.0009952*t.*exp(be*0.0009952*t).*(exp(-b*t) - 1))/b -...
-(ae*be*c*.0009952*t.*exp(be*0.0009952*t).*(exp(-d*t) - 1))/d -...
-(ae*be*.0009952*t*g.*exp(be*0.0009952*t).*(exp(-h*t) - 1))/h,...
-'independent','t');
+
 
 
 
@@ -35,9 +31,5 @@ modelLib.relax_3es.type="Relax";
 modelLib.ramp_3es.eqn=ramp3es;
 modelLib.ramp_3es.type="Ramp";
 
-modelLib.ramp_eps.eqn=ramp_eps;
-modelLib.ramp_eps.type="Ramp";
-
 modelLib.linear.eqn="poly1";
 modelLib.linear.type="Ramp";
-
