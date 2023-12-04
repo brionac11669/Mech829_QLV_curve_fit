@@ -2,7 +2,7 @@
 addpath('utilities','dataset')
 %% INSERT FILE NAME/data table import HERE
 savedata='y';importdata='n';
-filename='Nov23_S1_10_20';
+filename='Nov23_S1_20_20';
 %% Importing data based on settting & manual cleanup
 initialize
 [data,dedt]=read_data(filename);
@@ -19,7 +19,8 @@ save_data
 %% Parameter Guess & Model Selection
 % guess_relax=[1e3 1e5 20];
 guess_relax=[0.3 0.04 .3 .004 .4 .3];
-guess_ramp=[0.0881 0.0859 0.0310 0.0860 0.0021 0.1000];
+% guess_ramp=[0.0881 0.0859 0.0310 0.0860 0.0021 0.1000];
+guess_ramp=[1 .001 1.5 .07 1.4 .3];
 guess_relax3es=[1e3 5e4 10];
 %% More prep work
 check_range
@@ -81,6 +82,6 @@ plotrelax(data,data.relax_eps,timerange_relax);
 %% Normalized relaxation curve
 [norm_fig,count]=plot_norm_relax...
     (data.time,data.force,s0_loc,s0_max,save_count);
-% legend('10%-0.1%','10%-20%','20%-0.1%','20%-20%','10%-20%','20%-0.1%')
+legend('10%-0.1%','10%-20%','20%-0.1%','20%-20%','10%-20%','20%-0.1%')
 
 save_data

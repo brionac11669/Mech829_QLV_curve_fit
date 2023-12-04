@@ -12,12 +12,14 @@ if savedata~='y'||~exist('save_count','var')
     save_count=1;
     close all
 else
-    try
-        close(ramp_fig)
-        close(relax_fig)
-        close(raw_fig)
-    catch
-        close all
+    try close 1
+    catch fprintf ('Raw figure closed\n')
+    end
+    try close 2
+    catch fprintf ('Ramp figure closed\n')
+    end
+    try close 3
+    catch fprintf ('Relax figure closed\n')
     end
     clearvars -except importdata filename savedata save_count...
         time force s0_max s0_loc n norm_fig eps0 count_var
