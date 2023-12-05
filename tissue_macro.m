@@ -2,7 +2,7 @@
 addpath('utilities','dataset')
 %% INSERT FILE NAME/data table import HERE
 savedata='y';importdata='n';
-filename='Nov23_S1_20_20';
+filename='Nov23_S1_20_01';
 %% Importing data based on settting & manual cleanup
 initialize
 [data,dedt]=read_data(filename);
@@ -18,10 +18,10 @@ save_data
 
 %% Parameter Guess & Model Selection
 % guess_relax=[1e3 1e5 20];
-guess_relax=[0.3 0.04 .3 .004 .4 .3];
+guess_relax=[0.3 0.04 .3 .004 .4 .3]; %[a b c d g h]
 % guess_ramp=[0.0881 0.0859 0.0310 0.0860 0.0021 0.1000];
-guess_ramp=[1 .001 1.5 .07 1.4 .3];
-guess_relax3es=[1e3 5e4 10];
+guess_ramp=[1 .001 1.5 .07 1.4 .3]; %[a b c d g h]
+guess_relax3es=[1e3 5e4 10]; %[q0 q1 p1]
 %% More prep work
 check_range
 if runstat==0 
@@ -74,10 +74,10 @@ legend('Stress','Reduced Relaxation Fit','Strain',...
     'location','southwest')
 
 %% Relaxation plot
-% relax_fig=plotrelax(data,data.relax_3es,timerange_relax);
+relax_fig=plotrelax(data,data.relax_3es,timerange_relax);
 plotrelax(data,data.relax_eps,timerange_relax);
 
-%legend('Stress','3ES Relaxation Fit','Reduced Relaxation Fit')
+legend('Stress','3ES Relaxation Fit','Reduced Relaxation Fit')
 
 %% Normalized relaxation curve
 [norm_fig,count]=plot_norm_relax...
