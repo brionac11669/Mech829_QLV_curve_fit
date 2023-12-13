@@ -4,7 +4,7 @@
 figure(97); grid on; hold on
 plot(data.eps(1:s0_loc),data.force(1:s0_loc))
 plot(data.eps(1:exclude_loc),result(data.eps(1:exclude_loc)))
-xlabel("Strain (mm/mm)");ylabel("Force (gf)"),legend('Force','Strain')
+xlabel('Strain (mm/mm)');ylabel('Stress (Pa)'),legend('Stress-Strain','Curve Fit','location','southeast')
 disp(result)
 disp(gof_ramp)
 fprintf(['Closing Ramp stress/strain figure. \n' ...

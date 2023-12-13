@@ -1,11 +1,12 @@
 figure(98);grid on;hold on
 plot(data.time(1:s0_loc(save_count)),data.force(1:s0_loc(save_count)),'.')
+xlabel('Ramp Time (s)'); ylabel('Stress (Pa)')
 t1_ramp=input('t1_ramp (s): ') ; t2_ramp=input('t2_ramp (s): ');
 plot([t1_ramp t1_ramp],[0 max(data.force)],'k-');plot([t2_ramp t2_ramp],[0 max(data.force)],'k-')
-xlabel('Ramp Time (s)'); ylabel('Ramp Force (N)')
+
 
 figure(98);grid on;hold on;
-xlabel('Ramp Time (s)'); ylabel('Ramp Force (N)');
+xlabel('Ramp Time (s)'); ylabel('Stress (Pa)');
 time_confirm=input(sprintf('Confirm time range: [%.2f %.2f] (y/n)? ',t1_ramp,t2_ramp),'s');
 if time_confirm=='y'||isequal(time_confirm,"yes")||time_confirm=='1'
     fprintf('Fitting...\n')

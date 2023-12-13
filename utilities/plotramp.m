@@ -10,5 +10,5 @@ xlabel('Time (s)'); ylabel('Strain (mm/mm)')
 yyaxis left
 plot(data.time(1:s0_loc-1),data.force(1:s0_loc-1),'.')
 plot(data.time(time),data.ramp_eps(data.time(time)),'m-')
-ylabel('Force (gf)')
+ylabel('Stress (Pa)')
 end

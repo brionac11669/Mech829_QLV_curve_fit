@@ -1,8 +1,8 @@
 %% Initialization: Put all your .txt in the same folder as this file
 addpath('utilities','dataset')
 %% INSERT FILE NAME/data table import HERE
-savedata='y';importdata='n';
-filename='Nov23_S1_20_20';
+savedata='n';importdata='n';
+filename='Nov23_S1_20_01';
 %% Importing data based on settting & manual cleanup
 initialize
 [data,dedt]=read_data(filename);
@@ -13,15 +13,15 @@ s0_loc(save_count)=find(data.force==s0_max(save_count),1,'first'); %find index o
 eps0(save_count)=(max(data.eps)-min(data.eps))/height; % Find maximum strain
 dedt=dedt/height;
 data.eps=abs(data.eps-max(data.eps))/height;
-
+data.force=data.force*.00981/area;
 save_data
 
 %% Parameter Guess & Model Selection
 % guess_relax=[1e3 1e5 20];
 guess_relax=[0.3 0.04 .3 .004 .4 .3];
 % guess_ramp=[0.0881 0.0859 0.0310 0.0860 0.0021 0.1000];
-guess_ramp=[1 .001 1.5 .07 1.4 .3];
-guess_relax3es=[1e3 5e4 10];
+guess_ramp=[7 1 7 1 7 1];
+guess_relax3es=[400 5e5 10];
 %% More prep work
 check_range
 if runstat==0 
@@ -68,16 +68,16 @@ disp(data.relax_3es);disp(gof.relax_3es)
 raw_fig=plotraw(data);
 legend('Stress','Strain','location','east')
 
-% Ramp plot
+%% Ramp plot
 ramp_fig=plotramp(data,exclude_loc,s0_loc(save_count));
 legend('Stress','Reduced Relaxation Fit','Strain',...
     'location','southwest')
 
 %% Relaxation plot
-% relax_fig=plotrelax(data,data.relax_3es,timerange_relax);
-plotrelax(data,data.relax_eps,timerange_relax);
+relax_fig=plotrelax(data,data.relax_3es,timerange_relax);
+% plotrelax(data,data.relax_eps,timerange_relax);
 
-%legend('Stress','3ES Relaxation Fit','Reduced Relaxation Fit')
+legend('Stress','Reduced Relaxation Fit')
 
 %% Normalized relaxation curve
 [norm_fig,count]=plot_norm_relax...
