@@ -11,24 +11,23 @@ to data.time, data.force and data.eps, respectively before proceeding.
 ***BEFORE RUNNING THE MACRO*** test
 **MAKE SURE .TXT FILES GOES INTO `dataset`**
 ### Saving data
-
+Always start first run with `savedata='n'`
 To save data over multiple runs: set `savedata` to `'y'`
 To run once: set `savedata` to `'n'`. This will clear all data before every 
 new run.
 
 ### Importing rubber disc data
-
 To import rubber disc experiments: set `importdata` to `'y'`. The macro will 
 import a set of cleaned-up data from two rubber disc experiments. Assign
 the appropriate variable to `filename`.
 
-### Setting initial guess (line 18-19)
+### Setting initial guess 
 
 Initial guesses for models are in `Parameter Guess & Model Selection`
 
 ### Ranp Time range
 
-Input time range for the ramp section.
+Input time range for the ramp section. Follow on-screen instructions
 
 ### Model selection OUT OF DATE DONT READ FURTHER
 
